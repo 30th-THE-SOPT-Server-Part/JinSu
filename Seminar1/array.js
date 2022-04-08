@@ -1,5 +1,5 @@
 const firstArray = [1, 'item', true];
-const secondArray = Array(4, null, { item: 'item' });
+const secondArray = Array(4, null, {item: 'item'});
 
 firstArray.map(item => console.log(item));
 secondArray.map(item => console.log(item));

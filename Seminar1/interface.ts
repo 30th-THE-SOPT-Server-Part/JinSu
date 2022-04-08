@@ -89,6 +89,7 @@ interface Sopt {
     group: string[];
     part: string[];
     president: string;
+
     introduce(): string[];
 }
 

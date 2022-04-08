@@ -12,12 +12,12 @@ const numberTypeArray: number[] = [1, 2, 3];
 const stringTypeArray: Array<string> = ['hello', 'world'];
 
 const objArr: {}[] = [
-    { item: 'value' },
-    { item: 'value2' }
+    {item: 'value'},
+    {item: 'value2'}
 ];
 
 objArr.map(obj => {
-     console.log(`item: ${obj}`)
+    console.log(`item: ${obj}`)
 })
 // objArr.map((obj: any) => {
 //     console.log(`item: ${obj.item1}`);
