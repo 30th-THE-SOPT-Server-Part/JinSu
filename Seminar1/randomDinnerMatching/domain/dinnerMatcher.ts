@@ -10,13 +10,13 @@ export interface DinnerMatcher {
 
 export class SoptDinnerMatcher implements DinnerMatcher {
     member: SoptMember[];
-
+    private RANDOM_HALF_CONDITION: number = 0.5
     constructor(memberDatasource: MemberDataSource) {
         this.member = memberDatasource.getMembers();
     }
 
     shuffle(members: SoptMember[]): SoptMember[] {
-        return members.sort(() => Math.random() - 0.5);
+        return members.sort(() => Math.random() - this.RANDOM_HALF_CONDITION);
     }
 
     organize(members: SoptMember[]): DinnerMember {
