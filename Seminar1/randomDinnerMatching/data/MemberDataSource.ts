@@ -1,4 +1,4 @@
-import {SOPT_GROUP, SoptMember} from "../domain/model/SoptMember";
+import { SOPT_GROUP, SoptMember } from "../domain/model/SoptMember";
 
 export class MemberDataSource {
     public getMembers(): SoptMember[] {

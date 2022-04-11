@@ -1,4 +1,4 @@
-import {SoptMember} from "./SoptMember";
+import { SoptMember } from "./SoptMember";
 
 export class DinnerMember {
     constructor(

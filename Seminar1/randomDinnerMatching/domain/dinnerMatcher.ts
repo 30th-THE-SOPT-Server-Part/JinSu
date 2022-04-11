@@ -1,6 +1,6 @@
-import {SOPT_GROUP, SoptMember} from "./model/SoptMember";
-import {MemberDataSource} from "../data/MemberDataSource";
-import {DinnerMember} from "./model/DinnerMember";
+import { SOPT_GROUP, SoptMember } from "./model/SoptMember";
+import { MemberDataSource } from "../data/MemberDataSource";
+import { DinnerMember } from "./model/DinnerMember";
 
 export interface DinnerMatcher {
     member: SoptMember[];
@@ -8,7 +8,7 @@ export interface DinnerMatcher {
     organize(members: SoptMember[]): DinnerMember;
 }
 
-export class SoptDinnerMatcher implements DinnerMatcher{
+export class SoptDinnerMatcher implements DinnerMatcher {
     member: SoptMember[];
 
     constructor(memberDatasource: MemberDataSource) {
