@@ -1,7 +1,7 @@
-import { Inject, Service } from "typedi";
-import { UserDataSource } from "../datasource/user/UserDataSource";
-import { MockUserRepository } from "../repository/MockUserRepository";
-import { User } from "../model/user/User";
+import { Inject, Service }    from "typedi";
+import { UserDataSource }     from "../../datasource/user/UserDataSource";
+import { MockUserRepository } from "../../repository/user/MockUserRepository";
+import { User }               from "../../model/user/User";
 
 @Service()
 export class UserService {

@@ -1,6 +1,6 @@
-import { UserDataSource } from "./UserDataSource";
-import { SOPT_PART, User } from "../../model/user/User";
-import { Service } from "typedi";
+import { UserDataSource }        from "./UserDataSource";
+import { SOPT_PART, User }       from "../../model/user/User";
+import { Service }               from "typedi";
 import { UserNameNotFoundError } from "../../domain/UserNameNotFoundError";
 
 @Service()

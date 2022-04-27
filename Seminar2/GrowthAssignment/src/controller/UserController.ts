@@ -1,12 +1,12 @@
-import { Controller, Get, QueryParam, Req, Res } from "routing-controllers";
-import { Request, Response } from "express";
-import { UserService } from "../../service/UserService";
-import { Service } from "typedi";
-import HttpState from "../../util/HttpState";
-import { User } from "../../model/user/User";
-import { UserNameNotFoundError } from "../../domain/UserNameNotFoundError";
+import { JsonController, Get, QueryParam, Req, Res } from "routing-controllers";
+import { Request, Response }                         from "express";
+import { UserService }                               from "../service/user/UserService";
+import { Service }                                   from "typedi";
+import HttpState                                     from "../util/HttpState";
+import { User }                                      from "../model/user/User";
+import { UserNameNotFoundError }                     from "../domain/UserNameNotFoundError";
 
-@Controller()
+@JsonController()
 @Service()
 export class UserController {
 

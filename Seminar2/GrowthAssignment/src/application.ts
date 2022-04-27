@@ -1,9 +1,8 @@
 import 'reflect-metadata';
-import express from "express";
+import express                            from "express";
 import { useContainer, useExpressServer } from "routing-controllers";
-import { Container } from "typedi";
-import { routingConfig } from "./config/routingConfig";
-import { INJECT_IDENTIFIER } from "./config/GrowthAssignmentContainer";
+import { Container }                      from "typedi";
+import { routingConfig }                  from "./config/routingConfig";
 
 export class Application {
     public app: express.Application;
@@ -15,12 +14,13 @@ export class Application {
 
     private setMiddlewares(): void {
         this.app.use(express.json());
+        this.app.use(express.urlencoded({extended: false}));
     }
 
     public createExpressServer(port: number) {
         useContainer(Container);
         useExpressServer(this.app, routingConfig);
-        this.app.listen(port, ()=>{
+        this.app.listen(port, () => {
             console.log(`server port is ${port}`);
         })
     }
