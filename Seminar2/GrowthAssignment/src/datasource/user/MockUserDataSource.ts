@@ -1,9 +1,10 @@
 import { UserDataSource } from "./UserDataSource";
-import { SOPT_PART, User } from "../model/User";
+import { SOPT_PART, User } from "../../model/user/User";
 import { Service } from "typedi";
+import { UserNameNotFoundError } from "../../domain/UserNameNotFoundError";
 
 @Service()
-export class MockUserDataSource implements UserDataSource {
+export default class MockUserDataSource implements UserDataSource {
     constructor() {
     }
 
@@ -24,8 +25,7 @@ export class MockUserDataSource implements UserDataSource {
                     resolve(this.user);
                     return;
                 }
-                reject(null);
-
+                reject(new UserNameNotFoundError(`can not found ${name}`));
             }, 200);
         })
     }
