@@ -1,10 +1,7 @@
 import { Inject, Service } from "typedi";
-import { UserDataSource } from "../datasource/UserDataSource";
-import { INJECT_KEY } from "../config/GrowthAssignmentContainer";
+import { UserDataSource } from "../datasource/user/UserDataSource";
 import { MockUserRepository } from "../repository/MockUserRepository";
-import { User } from "../model/User";
-import DefaultResponse from "../model/DefaultResponse";
-import HttpState from "../util/HttpState";
+import { User } from "../model/user/User";
 
 @Service()
 export class UserService {
