@@ -11,4 +11,13 @@ const message = {
     UPDATE_USER_SUCCEss: '유저 삭제 성공'
 }
 
-export default message;
+const blogResponseMessage = {
+    NOT_FOUND_USER: "작성자의 정보를 찾을 수 없습니다.",
+    CREATE_BLOG_SUCCESS: "블로그 글 작성 성공"
+}
+
+
+export{
+    message,
+    blogResponseMessage
+}
