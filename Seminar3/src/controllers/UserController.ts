@@ -72,7 +72,7 @@ const findUserById = async (req: Request, res: Response) => {
  *  @desc Delete User
  *  @access Public
  */
-const deleteUser = async (req: Request, res: Response) => {
+const delteUser = async (req: Request, res: Response) => {
     const { userId } = req.params;
 
     try {
@@ -89,5 +89,5 @@ export default {
     createUser,
     updateUser,
     findUserById,
-    deleteUser
+    deleteUser: delteUser
 }
