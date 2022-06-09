@@ -1,10 +1,10 @@
-import express, { Request, Response } from "express";
-import { UserCreateDto } from "../interfaces/user/UserCreateDto";
-import statusCode from "../modules/statusCode";
-import message from "../modules/responseMessage";
-import util from "../modules/util";
-import { UserService } from "../services";
-import { UserUpdateDto } from "../interfaces/user/UserUpdateDto";
+import { Request, Response } from "express";
+import { UserCreateDto }     from "../interfaces/user/UserCreateDto";
+import { UserUpdateDto }     from "../interfaces/user/UserUpdateDto";
+import { message }           from "../modules/responseMessage";
+import statusCode            from "../modules/statusCode";
+import util                  from "../modules/util";
+import { UserService }       from "../services";
 
 /**
  *  @route POST /user
@@ -32,7 +32,7 @@ const createUser = async (req: Request, res: Response) => {
  */
 const updateUser = async (req: Request, res: Response) => {
     const userUpdateDto: UserUpdateDto = req.body;
-    const { userId } = req.params;
+    const {userId} = req.params;
 
     try {
         await UserService.updateUser(userId, userUpdateDto);
@@ -50,7 +50,7 @@ const updateUser = async (req: Request, res: Response) => {
  *  @access Public
  */
 const findUserById = async (req: Request, res: Response) => {
-    const { userId } = req.params;
+    const {userId} = req.params;
 
     try {
         const data = await UserService.findUserById(userId);
@@ -73,7 +73,7 @@ const findUserById = async (req: Request, res: Response) => {
  *  @access Public
  */
 const delteUser = async (req: Request, res: Response) => {
-    const { userId } = req.params;
+    const {userId} = req.params;
 
     try {
         await UserService.deleteUser(userId);

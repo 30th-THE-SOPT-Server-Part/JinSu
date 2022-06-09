@@ -1,5 +1,7 @@
-import mongoose   from 'mongoose';
+import mongoose, { Model, Document }   from 'mongoose';
+import { Blog }   from "../interfaces/blog/Blog";
 import UserSchema from "./User";
+
 const BlogSchema = new mongoose.Schema({
     title: {
         type: String,
@@ -10,9 +12,9 @@ const BlogSchema = new mongoose.Schema({
         required: true
     },
     user: {
-        type: UserSchema,
+        type: mongoose.Types.ObjectId,
         required: true
     }
 })
 
-export default mongoose.model<mongoose.Document>("Blog", BlogSchema);
+export default mongoose.model<Blog & mongoose.Document>("Blog", BlogSchema);

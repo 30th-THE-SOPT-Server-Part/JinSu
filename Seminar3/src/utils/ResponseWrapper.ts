@@ -1,6 +1,5 @@
 import ResponseWrapDTO from "../interfaces/common/ResponsWrapDTO";
 
-
 export default class ResponseWrapper {
     static successOf<T>(status: number, messgae: string, data?: T): ResponseWrapDTO<T> {
         return {

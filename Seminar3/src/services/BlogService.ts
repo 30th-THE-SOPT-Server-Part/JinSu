@@ -1,5 +1,5 @@
-import mongoose                  from "mongoose";
-import { Service }               from "typedi";
+import { Inject, Service }       from "typedi";
+import { Logger }                from "winston";
 import { BlogCreateDTO }         from "../interfaces/blog/BlogCreateDTO";
 import { BlogCreateResponseDTO } from "../interfaces/blog/BlogCreateResponseDTO";
 import BlogMapper                from "../interfaces/blog/BlogMapper";
@@ -9,7 +9,12 @@ import User                      from "../models/User";
 
 @Service()
 export default class BlogService {
-    constructor() {
+    private blogDAO = BlogDAO
+
+    constructor(
+        //@Inject("BlogDAO") private blogDAO: Model<Blog & Document>
+        @Inject("Logger") private logger: Logger
+    ) {
     }
 
     async createBlog(blogCreateDTO: BlogCreateDTO) {
@@ -18,8 +23,7 @@ export default class BlogService {
             if (!postedUser) {
                 return null;
             }
-            const blog = new BlogDAO(BlogMapper.toDomain(postedUser, blogCreateDTO));
-            await blog.save();
+            const blog = await this.blogDAO.create(BlogMapper.toDomain(postedUser, blogCreateDTO));
             return <BlogCreateResponseDTO>{
                 id: blog.id
             }
@@ -28,7 +32,7 @@ export default class BlogService {
         }
     }
 
-    private findPostedUserById = async (userId: mongoose.Types.ObjectId): Promise<UserInfo | null> => {
+    private findPostedUserById = async (userId: string): Promise<UserInfo | null> => {
         try {
             const user = await User.findById(userId);
             if (!user) {
@@ -39,4 +43,7 @@ export default class BlogService {
             throw error;
         }
     }
+
+    /*async findBlogById(blogId: ) {
+    }*/
 };

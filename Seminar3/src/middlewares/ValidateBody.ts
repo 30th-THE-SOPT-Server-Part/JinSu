@@ -1,7 +1,7 @@
 import { plainToInstance }                 from "class-transformer";
 import { validateOrReject }                from "class-validator";
 import { NextFunction, Request, Response } from "express";
-import message                             from "../modules/responseMessage";
+import { message }                         from "../modules/responseMessage";
 import statusCode                          from "../modules/statusCode";
 import ResponseWrapper                     from "../utils/ResponseWrapper";
 

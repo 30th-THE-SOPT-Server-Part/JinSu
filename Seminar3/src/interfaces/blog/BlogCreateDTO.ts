@@ -4,15 +4,15 @@ import { UserInfo }            from "../user/UserInfo";
 import { Blog }                from "./Blog";
 
 export class BlogCreateDTO {
-    @IsMongoId()
-    userId: mongoose.Types.ObjectId;
+    @IsString()
+    userId: string;
     @IsString()
     title: string;
     @IsString()
     contents: string;
 
 
-    constructor(userId: mongoose.Types.ObjectId, title: string, contents: string) {
+    constructor(userId: string, title: string, contents: string) {
         this.userId = userId;
         this.title = title;
         this.contents = contents;

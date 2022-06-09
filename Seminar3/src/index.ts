@@ -1,44 +1,29 @@
+import express        from "express";
 import "reflect-metadata";
-import express, { Request, Response, NextFunction } from "express";
-import config from "./config";
-const app = express();
-import connectDB from "./loaders/db";
-import routes from './routes';
+import { Container }  from "typedi";
+import config         from "./config";
+import startLoaders   from "./loaders";
+import Logger         from "./loaders/logger";
+
 require('dotenv').config();
+const serverStartMessage = `
+    ################################################
+     🛡️ Server listening on port ${config.port} 🛡️
+    ################################################
+  `
 
-connectDB();
-
-app.use(express.urlencoded({ extended: true }));
-app.use(express.json());
-
-app.use(routes);   //라우터 
-// error handler
-
-interface ErrorType {
-  message: string;
-  status: number;
+async function startServer() {
+    const app = express();
+    await startLoaders(app);
+    app.listen(config.port, () => {
+        Logger.info(serverStartMessage);
+    }).on("error", (err) => {
+        Logger.error(err)
+        process.exit(1);
+    });
 }
 
-// 모든 에러
-app.use(function (err: ErrorType, req: Request, res: Response, next: NextFunction) {
-
-  res.locals.message = err.message;
-  res.locals.error = req.app.get("env") === "production" ? err : {};
-
-  // render the error page
-  res.status(err.status || 500);
-  res.render("error");
-});
-
-app
-  .listen(config.port, () => {
-    console.log(`
-    ################################################
-          🛡️  Server listening on port 🛡️
-    ################################################
-  `);
-  })
-  .on("error", (err) => {
-    console.error(err);
-    process.exit(1);
-  });
+Container.set("Logger", 10);
+startServer().then(r => {
+    Logger.info(`starting Server`)
+})

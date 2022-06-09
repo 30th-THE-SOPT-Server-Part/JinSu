@@ -10,6 +10,11 @@ if (envFound.error) {
   throw new Error("⚠️  Couldn't find .env file  ⚠️");
 }
 
+const apiConfig = {
+  prefix: '/api',
+  version: 0
+}
+
 export default {
   /**
    * Your favorite port
@@ -20,4 +25,5 @@ export default {
    * MongoDB URI
    */
   mongoURI: process.env.MONGODB_URI as string,
+  apipath: `${apiConfig.prefix}/${apiConfig.version}`,
 };
